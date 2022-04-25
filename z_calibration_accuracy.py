@@ -4,7 +4,7 @@ from time import sleep
 
 HE_TEMPERATURE = 240                # extruder temperature for measurements.  Should be normal printing temp.
 BASE_URL = "http://127.0.0.1:7125"
-N_SAMPLES = 5
+N_SAMPLES = 5  # number of CALIBRATE_Z to execute.  Must >= 2
 OOZING_MINUTES=1
 CLEAN_NOZZLE_BEFORE_CALIBRATE_Z = True
 
@@ -91,8 +91,8 @@ def main():
         print(f"Auto Z Calibration trial {i}, gcode_offset: {offset}")
         intentional_oozing(minute=OOZING_MINUTES)
 
-    stdev = stdev(gcode_offsets)
-    print(f"Standard Deviation = {stdev}")
+    deviation = stdev(gcode_offsets)
+    print(f"Standard Deviation = {deviation}")
 
 if __name__ == "__main__":
     try:
