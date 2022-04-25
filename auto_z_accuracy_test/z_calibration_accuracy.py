@@ -69,7 +69,7 @@ def get_gcode_offset():
 def main():
     # Home all
     if send_gcode('G28'):
-        print("HomDONE")
+        print("Homing DONE")
     else:
         raise RuntimeError("Failed to home. Aborted.")
     clear_bed_mesh()
